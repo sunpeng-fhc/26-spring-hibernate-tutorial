@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.example.demo.rest;
 
+import com.example.demo.common.Coach;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,11 +15,14 @@ public class DemoController {
     private Coach myCoach;
 
 
-    // define a constructor for dependency injection
+// define a constructor for dependency injection
+
+//    @Qualifier  More specific ; Higher priority
     @Autowired
-    public DemoController(Coach theCoach){
+    public DemoController(@Qualifier("cricketCoach") Coach theCoach){
         myCoach = theCoach;
     }
+
 
 
     @GetMapping("/dailyworkout")
